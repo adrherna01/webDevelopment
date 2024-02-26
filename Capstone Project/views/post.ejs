@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<header>
+		<%- include("partials/header.ejs"); %>
+	</header>
+
+	<main class="content-post">
+		<h1><%= title %></h1>
+		<p><%= content %></p>
+
+		<form action="/delete/<%= postId %>" method="POST" style="display: inline;">
+			<input type="hidden" name="_method" value="DELETE">
+			<button type="submit" class="btn btn-primary gradient-background submit-button" >
+				<img class="add-logo" height="20px" src="/images/trash-fill.svg">Delete</button>
+		</form>
+
+		<form action="/edit/<%= postId %>" method="GET" style="display: inline;">
+			<button type="submit" class="btn btn-primary gradient-background submit-button" >
+				<img class="add-logo" height="20px" src="/images/pencil-fill.svg">Edit</button>
+		</form>
+
+	</main>
+
+	<footer>
+		<%- include("partials/footer.ejs"); %>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<header>
+		<%- include("partials/header.ejs"); %>
+	</header>
+
+	<main class="post-div">
+
+		<% if (!locals.title) { %>
+			<form action="/submitPost" method="POST">
+				<div class="input-group">
+					<h5>Title:</h5>
+					<textarea id="title" name="title" rows="1"></textarea>
+					<label for="title"></label>
+				</div>
+
+				<div class="input-group">
+					<h5>Your Message:</h5>
+					<textarea id="message" name="message" rows="10"></textarea>
+					<label for="message"></label>
+				</div>
+
+				<button type="submit" class="btn btn-primary gradient-background submit-button">
+					<img class="add-logo" height="20px" src="/images/plus-square-fill.svg">Post
+				</button>
+			</form>
+		<% } else {%>
+			<form action="/submitEdit/<%= postId%>" method="POST">
+				<div class="input-group">
+					<h5>Title:</h5>
+					<textarea id="title" name="title" rows="1"> <%= title %> </textarea>
+					<label for="title"></label>
+				</div>
+
+				<div class="input-group">
+					<h5>Your Message:</h5>
+					<textarea id="message" name="message" rows="10"> <%= content %> </textarea>
+					<label for="message"></label>
+				</div>
+
+				<button type="submit" class="btn btn-primary gradient-background submit-button">
+					<img class="add-logo" height="20px" src="/images/pencil-fill.svg">Edit</button>
+		<% } %>
+
+	</main>
+	<footer>
+		<%- include("partials/footer.ejs"); %>
+	</footer>
+
+</body>
+</html>
